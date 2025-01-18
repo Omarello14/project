@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6130342308237087367}
   - component: {fileID: 4699097611412756668}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
