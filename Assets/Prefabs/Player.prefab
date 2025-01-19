@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 9199154168024875498}
   - component: {fileID: 7042157388363486878}
   - component: {fileID: 4754248112651976892}
+  - component: {fileID: 1682962652963844847}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -264,12 +265,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 20
-  _jumpForce: 75
+  _jumpForce: 50
   _groundCheckDistance: 1.1
   _sensitivity: 5
-  _maxCameraTilt: 5
+  _maxCameraTilt: 3
   _cameraTiltSpeed: 5
   _groundCheckMask:
     serializedVersion: 2
     m_Bits: 55
   _camera: {fileID: 2180572925316621393}
+--- !u!114 &1682962652963844847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3595205371499539363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2991f12b8e51e22459b4bafdd7c56af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
