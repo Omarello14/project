@@ -7,7 +7,6 @@ public class Mover : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
-    [SerializeField] private float _groundCheckDistance = 1.1f;
     [SerializeField] private float _sensitivity = 1f;
     [SerializeField] private float _maxCameraTilt = 5f;
     [SerializeField] private float _cameraTiltSpeed = 5f;
@@ -98,6 +97,5 @@ public class Mover : MonoBehaviour
             || Physics.CheckBox(_coyoteChecker.transform.position, _coyoteChecker.size / 2f, _transform.rotation, _groundCheckMask)
             && Physics.CheckBox(_wallChecker.transform.position, _wallChecker.size / 2f, _transform.rotation, _groundCheckMask) == false)
             _yVelocity = _jumpForce;
-        
     }
 }
