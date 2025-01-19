@@ -14,6 +14,9 @@ public class Mover : MonoBehaviour
     [SerializeField] private LayerMask _groundCheckMask;
 
     [SerializeField] Transform _camera;
+    [SerializeField] SphereCollider _groundChecker;
+    [SerializeField] BoxCollider _coyoteChecker;
+    [SerializeField] BoxCollider _wallChecker;
     private CharacterController _controller;
     private Transform _transform;
 
@@ -91,7 +94,10 @@ public class Mover : MonoBehaviour
 
     private void GetJumpImpulse(InputAction.CallbackContext context)
     {
-        if (Physics.SphereCast(_transform.position, _controller.radius, Vector3.down, out RaycastHit hit, _groundCheckDistance, _groundCheckMask))
+        if (Physics.CheckSphere(_groundChecker.transform.position, _groundChecker.radius, _groundCheckMask)
+            || Physics.CheckBox(_coyoteChecker.transform.position, _coyoteChecker.size / 2f, _transform.rotation, _groundCheckMask)
+            && Physics.CheckBox(_wallChecker.transform.position, _wallChecker.size / 2f, _transform.rotation, _groundCheckMask) == false)
             _yVelocity = _jumpForce;
+        
     }
 }
