@@ -1,0 +1,39 @@
+using UnityEngine;
+using Pathfinder;
+
+namespace Enemies
+{
+    [RequairedComponent(typeof(Health))]
+
+    public class Cicada : MonoBehaviour
+    {
+        [SerializeField] private DestinationSetter _targeter;
+        
+        private Health _health;
+
+        private void Awake()
+        {
+            _health = GetComponent<Health>();
+        
+            if (_targeter.destination == null)
+                _targeter.destination =  FindObjectOfType(typeof(Player.Mover));
+        }
+
+        private void OnEnable()
+        {
+            _health.Died += OnDeath;
+        }
+
+        private void OnDisable()
+        {
+            _health.Died -= OnDeath;
+        }
+
+        
+
+        private void OnDeath()
+        {
+            
+        }
+    }
+}
