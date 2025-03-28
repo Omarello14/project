@@ -1,26 +1,17 @@
 using Pathfinding;
 using UnityEngine;
 
-
 public class Enemy : MonoBehaviour
 {
-    private const int TargetPointChildIndex = 0;
-
     [SerializeField] private MoveType _moveType;
-    [SerializeField] private float _radius;
+    [SerializeField] private MoverConfig _moverConfig;
 
-    private Transform _transform;
     private Health _health;
     private IEnemyMover _mover;
 
-    private void Awake()
+    protected void Awake()
     {
-        _transform = transform;
-        AILerp finder = GetComponent<AILerp>();
-        Seeker seeker = GetComponent<Seeker>();
-
-        Transform targetPoint = _transform.GetChild(TargetPointChildIndex);
-        targetPoint.parent = null;
+        GetComponent<SphereCollider>().radius = _moverConfig.PushingRadius.x;
 
         if (_moveType == MoveType.AirFollow)
         {
@@ -32,14 +23,27 @@ public class Enemy : MonoBehaviour
         }
         else if (_moveType == MoveType.AirRadiusFloating)
         {
-            _mover = new AirRadiusFloating(finder, seeker, _radius, _transform);
+            _mover = new AirRadiusFloating(transform, GetComponent<Rigidbody>(), _moverConfig);
         }
     }
-}
 
-public enum MoveType
-{
-    AirFollow,
-    GroundFollow,
-    AirRadiusFloating
+    protected void Update()
+    {
+        _mover.MoveTick();
+    }
+
+    protected void FixedUpdate()
+    {
+        _mover.FixedUpdate();
+    }
+
+    protected void OnTriggerEnter(Collider other)
+    {
+        _mover.OnTriggerEnter(other);
+    }
+
+    protected void OnTriggerExit(Collider other)
+    {
+        _mover.OnTriggerExit(other);
+    }
 }
