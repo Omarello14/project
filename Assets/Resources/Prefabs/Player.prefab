@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 1682962652963844847}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -426,7 +426,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 20
   _jumpForce: 40
-  _groundCheckDistance: 1.1
   _sensitivity: 5
   _maxCameraTilt: 3
   _cameraTiltSpeed: 5
@@ -437,6 +436,10 @@ MonoBehaviour:
   _groundChecker: {fileID: 860416028206589766}
   _coyoteChecker: {fileID: 4157633545922465887}
   _wallChecker: {fileID: 7078483988531794320}
+  _weapon:
+    _player: {fileID: 1643242072165413798}
+    _projectilePrefab: {fileID: 569147587698980718, guid: ad763416dec9bdc4388c451a8b5199fa, type: 3}
+    _damage: 10
 --- !u!114 &1682962652963844847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2991f12b8e51e22459b4bafdd7c56af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 0
 --- !u!1 &4159718291628141072
 GameObject:
   m_ObjectHideFlags: 0

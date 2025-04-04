@@ -7,9 +7,7 @@ public class Health : MonoBehaviour
 
     public float Value { get; private set; }
 
-    public event Action Died;
-    public event Action Damaged;
-    public event Action Healed;
+    public event Action<float> Damaged;
 
     private void OnValidate()
     {
@@ -21,29 +19,14 @@ public class Health : MonoBehaviour
         if (MaxHealth == 0)
         {
             Debug.LogWarning($"{nameof(MaxHealth)} is not initialized");
-
-            Died?.Invoke();
         }
 
         Value = MaxHealth;
     }
 
-    public void ApplyDamage(float value)
+    public void AddHealth(float value)
     {
-        if (value < 0) return;
-
-        Value = Mathf.Clamp(Value - value, 0, MaxHealth);
-
-        if (Value == 0)
-            Died?.Invoke();
-        else
-            Damaged?.Invoke();
-    }
-
-    public void Heal(float value)
-    {
-        Value += Mathf.Clamp(value, 0, float.MaxValue);
-
-        Healed?.Invoke();
+        Value = Mathf.Clamp(Value + value, 0, MaxHealth);
+        Damaged?.Invoke(Value);
     }
 }

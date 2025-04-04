@@ -1,18 +1,16 @@
 using Pathfinding;
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private MoveType _moveType;
-    [SerializeField] private MoverConfig _moverConfig;
+    [SerializeField] private ScriptableObject _moverConfig;
 
-    private Health _health;
     private IEnemyMover _mover;
 
-    protected void Awake()
+    protected void Init(Transform movingObject)
     {
-        GetComponent<SphereCollider>().radius = _moverConfig.PushingRadius.x;
-
         if (_moveType == MoveType.AirFollow)
         {
 
@@ -23,27 +21,34 @@ public class Enemy : MonoBehaviour
         }
         else if (_moveType == MoveType.AirRadiusFloating)
         {
-            _mover = new AirRadiusFloating(transform, GetComponent<Rigidbody>(), _moverConfig);
+            if (_moverConfig is AirRadiusFloatingConfig == false)
+            {
+                Debug.LogError("Wrong confog");
+                return;
+            }
+
+            _mover = new AirRadiusFloating(movingObject, _moverConfig as AirRadiusFloatingConfig);
         }
+        else if (_moveType == MoveType.AirRandomPoint)
+        {
+            if (_moverConfig is AirRandomPointConfig == false)
+            {
+                Debug.LogError("Wrong confog");
+                return;
+            }
+
+            _mover = new AirRandomPoint(movingObject, _moverConfig as AirRandomPointConfig);
+        }
+    }
+
+    private void Start()
+    {
+        if (_mover == null)
+            throw new NullReferenceException("MOVER IS NOT INITIALIZED CALL INIT FUNC IN AWAKE METHOD OF CHILD CLASS YOU DUMBASS");
     }
 
     protected void Update()
     {
         _mover.MoveTick();
-    }
-
-    protected void FixedUpdate()
-    {
-        _mover.FixedUpdate();
-    }
-
-    protected void OnTriggerEnter(Collider other)
-    {
-        _mover.OnTriggerEnter(other);
-    }
-
-    protected void OnTriggerExit(Collider other)
-    {
-        _mover.OnTriggerExit(other);
     }
 }

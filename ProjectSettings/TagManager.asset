@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Pushing
+  - PlayerBullet
+  - EnemyBullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,9 +18,9 @@ TagManager:
   - Player
   - Barrier
   - Pushing
-  - 
-  - 
-  - 
+  - EnemyBullet
+  - PlayerBullet
+  - Enemy
   - 
   - 
   - 

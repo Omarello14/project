@@ -2,5 +2,6 @@
 {
     AirFollow,
     GroundFollow,
-    AirRadiusFloating
+    AirRadiusFloating,
+    AirRandomPoint
 }

@@ -13,7 +13,7 @@ public class PlayerGiver : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject); //????? ????????, ?????????
         }
         else
         {

@@ -18,6 +18,10 @@ namespace Player
         [SerializeField] SphereCollider _groundChecker;
         [SerializeField] BoxCollider _coyoteChecker;
         [SerializeField] BoxCollider _wallChecker;
+
+        [Header("Weapon")]
+        [SerializeField] private Weapon _weapon;
+
         private CharacterController _controller;
         private Transform _transform;
 
@@ -42,6 +46,7 @@ namespace Player
             _input.Enable();
 
             _input.Player.Jump.performed += GetJumpImpulse;
+            _input.Player.Attack.performed += OnAttack;
         }
 
         private void OnDisable()
@@ -49,6 +54,7 @@ namespace Player
             _input.Disable();
 
             _input.Player.Jump.performed -= GetJumpImpulse;
+            _input.Player.Attack.performed -= OnAttack;
         }
 
         private void Update()
@@ -99,6 +105,12 @@ namespace Player
                 || Physics.CheckBox(_coyoteChecker.transform.position, _coyoteChecker.size / 2f, _transform.rotation, _groundCheckMask)
                 && Physics.CheckBox(_wallChecker.transform.position, _wallChecker.size / 2f, _transform.rotation, _groundCheckMask) == false)
                 _yVelocity = _jumpForce;
+        }
+
+        private void OnAttack(InputAction.CallbackContext context)
+        {
+            Debug.Log(_cameraAngleZ);
+            _weapon.OnAttack(Quaternion.Euler(_camera.eulerAngles.x, _transform.eulerAngles.y, _transform.position.z));
         }
     }
 }
