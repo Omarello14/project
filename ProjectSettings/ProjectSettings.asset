@@ -814,7 +814,24 @@ PlayerSettings:
   webGLWebAssemblyBigInt: 0
   webGLCloseOnQuit: 0
   webWasm2023: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: ASTAR_RECAST_LARGER_TILES
+    EmbeddedLinux: ASTAR_RECAST_LARGER_TILES
+    GameCoreScarlett: ASTAR_RECAST_LARGER_TILES
+    GameCoreXboxOne: ASTAR_RECAST_LARGER_TILES
+    LinuxHeadlessSimulation: ASTAR_RECAST_LARGER_TILES
+    Nintendo Switch: ASTAR_RECAST_LARGER_TILES
+    PS4: ASTAR_RECAST_LARGER_TILES
+    PS5: ASTAR_RECAST_LARGER_TILES
+    QNX: ASTAR_RECAST_LARGER_TILES
+    ReservedCFE: ASTAR_RECAST_LARGER_TILES
+    Standalone: ASTAR_RECAST_LARGER_TILES
+    VisionOS: ASTAR_RECAST_LARGER_TILES
+    WebGL: ASTAR_RECAST_LARGER_TILES
+    Windows Store Apps: ASTAR_RECAST_LARGER_TILES
+    XboxOne: ASTAR_RECAST_LARGER_TILES
+    iPhone: ASTAR_RECAST_LARGER_TILES
+    tvOS: ASTAR_RECAST_LARGER_TILES
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

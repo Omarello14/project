@@ -7,7 +7,10 @@ public class Health : MonoBehaviour
 
     public float Value { get; private set; }
 
-    public event Action<float> Damaged;
+    public event Action<Health> Damaged;
+    public event Action<Health> Died;
+
+    private bool _isDead = false;
 
     private void OnValidate()
     {
@@ -26,7 +29,14 @@ public class Health : MonoBehaviour
 
     public void AddHealth(float value)
     {
+        Debug.Log("hit");
         Value = Mathf.Clamp(Value + value, 0, MaxHealth);
-        Damaged?.Invoke(Value);
+        Damaged?.Invoke(this);
+
+        if (Value <= 0 && _isDead == false)
+        {
+            Died?.Invoke(this);
+            _isDead = true;
+        }
     }
 }

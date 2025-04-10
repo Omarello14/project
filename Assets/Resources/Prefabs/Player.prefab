@@ -426,7 +426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 20
   _jumpForce: 40
-  _sensitivity: 5
+  _sensitivity: 20
   _maxCameraTilt: 3
   _cameraTiltSpeed: 5
   _groundCheckMask:
@@ -438,8 +438,10 @@ MonoBehaviour:
   _wallChecker: {fileID: 7078483988531794320}
   _weapon:
     _player: {fileID: 1643242072165413798}
-    _projectilePrefab: {fileID: 569147587698980718, guid: ad763416dec9bdc4388c451a8b5199fa, type: 3}
+    _projectilePrefab: {fileID: 868201203048888162, guid: ad763416dec9bdc4388c451a8b5199fa, type: 3}
     _damage: 10
+    _speed: 100
+    _bulletLifetime: 10
 --- !u!114 &1682962652963844847
 MonoBehaviour:
   m_ObjectHideFlags: 0

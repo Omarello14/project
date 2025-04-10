@@ -17,13 +17,13 @@ public class Enemy : MonoBehaviour
         }
         else if (_moveType == MoveType.GroundFollow)
         {
-
+            _mover = new GroundFollow(PlayerGiver.Instance.Player, GetComponent<AIDestinationSetter>());
         }
         else if (_moveType == MoveType.AirRadiusFloating)
         {
             if (_moverConfig is AirRadiusFloatingConfig == false)
             {
-                Debug.LogError("Wrong confog");
+                Debug.LogError("Wrong config");
                 return;
             }
 
@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
         {
             if (_moverConfig is AirRandomPointConfig == false)
             {
-                Debug.LogError("Wrong confog");
+                Debug.LogError("Wrong config");
                 return;
             }
 

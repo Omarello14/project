@@ -6,6 +6,7 @@ public class PlayerGiver : MonoBehaviour
 
     public static PlayerGiver Instance;
 
+    public Transform Player => _player;
     public Vector3 PlayerPos => _player.position;
 
     private void Awake()

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1976253718740887737}
   - component: {fileID: 8122061022434417242}
+  - component: {fileID: 1495596770349511548}
   m_Layer: 0
   m_Name: Caterpillar
   m_TagString: Untagged
@@ -48,3 +49,16 @@ MonoBehaviour:
   _moverConfig: {fileID: 11400000, guid: 5ee74e121798a754f99846d405ca6238, type: 2}
   _distanceBetweenSegments: 2
   _segmentsLerpFactor: 0.9
+--- !u!114 &1495596770349511548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019137336280453498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2991f12b8e51e22459b4bafdd7c56af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 1

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4876be2c0724ed469977ae889efffae, type: 3}
   m_Name: Caterpillar mover coonfig
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 20
+  <Speed>k__BackingField: 17
   <TurnSpeed>k__BackingField: 3
-  <RandomRadius>k__BackingField: 100
+  <RandomRadius>k__BackingField: 10
   <MinHeight>k__BackingField: 10
   <NextPointDistance>k__BackingField: 5

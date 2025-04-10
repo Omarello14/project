@@ -57,7 +57,7 @@ namespace Player
             _input.Player.Attack.performed -= OnAttack;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             ProcessMovement();
             RotateCamera();
@@ -68,7 +68,7 @@ namespace Player
             Vector2 input = _input.Player.Move.ReadValue<Vector2>();
             Vector3 direction = _transform.right * input.x + _transform.forward * input.y;
 
-            _controller.Move(new Vector3(direction.x * _speed, _yVelocity, direction.z * _speed) * Time.deltaTime);
+            _controller.Move(new Vector3(direction.x * _speed, _yVelocity, direction.z * _speed) * Time.fixedDeltaTime);
 
             if (_controller.isGrounded == false)
             {
@@ -79,7 +79,7 @@ namespace Player
                 _yVelocity = -1;
             }
 
-            _cameraAngleZ = Mathf.Lerp(_cameraAngleZ, _maxCameraTilt * -input.x, _cameraTiltSpeed * Time.deltaTime);
+            _cameraAngleZ = Mathf.Lerp(_cameraAngleZ, _maxCameraTilt * -input.x, _cameraTiltSpeed * Time.fixedDeltaTime);
             _camera.localEulerAngles = new Vector3(
                 _camera.localEulerAngles.x,
                 _camera.localEulerAngles.y,
@@ -90,13 +90,13 @@ namespace Player
         {
             Vector2 pointerDelta = _input.Player.Look.ReadValue<Vector2>();
 
-            _cameraAngleX = Mathf.Clamp(_cameraAngleX - pointerDelta.y * _sensitivity * Time.deltaTime, -89, 89);
+            _cameraAngleX = Mathf.Clamp(_cameraAngleX - pointerDelta.y * _sensitivity * Time.fixedDeltaTime, -89, 89);
             _camera.localEulerAngles = new Vector3(
                 _cameraAngleX,
                 _camera.localEulerAngles.y,
                 _camera.localEulerAngles.z);
 
-            _transform.Rotate(Vector3.up * pointerDelta.x * _sensitivity * Time.deltaTime);
+            _transform.Rotate(Vector3.up * pointerDelta.x * _sensitivity * Time.fixedDeltaTime);
         }
 
         private void GetJumpImpulse(InputAction.CallbackContext context)
@@ -109,7 +109,6 @@ namespace Player
 
         private void OnAttack(InputAction.CallbackContext context)
         {
-            Debug.Log(_cameraAngleZ);
             _weapon.OnAttack(Quaternion.Euler(_camera.eulerAngles.x, _transform.eulerAngles.y, _transform.position.z));
         }
     }
