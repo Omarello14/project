@@ -12,7 +12,7 @@ public class Caterpillar : Enemy
     private List<Transform> _bodySegments;
     private Health _health;
 
-    private void Awake()
+    private void Start()
     {
         _health = GetComponent<Health>();
 
